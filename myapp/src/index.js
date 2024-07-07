@@ -1,26 +1,25 @@
 import ReactDOM from "react-dom/client";
-import dog01 from "./asset/image/dog01.png"
-import dog02 from "./asset/image/dog02.png"
-import dog03 from "./asset/image/dog03.png"
-import dog04 from "./asset/image/dog04.png"
-import dog05 from "./asset/image/dog05.png"
-import dog06 from "./asset/image/dog06.png"
-import dog07 from "./asset/image/dog07.png"
-import dog08 from "./asset/image/dog08.png"
-
+import dog01 from "./asset/image/dog01.png";
+import dog02 from "./asset/image/dog02.png";
+import dog03 from "./asset/image/dog03.png";
+import dog04 from "./asset/image/dog04.png";
+import dog05 from "./asset/image/dog05.png";
+import dog06 from "./asset/image/dog06.png";
+import dog07 from "./asset/image/dog07.png";
+import dog08 from "./asset/image/dog08.png";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-function NameOne(props) {
+function NameOne({ myname, img }) {
   return (
-    <div style={{ backgroundColor: "white", width: "250px", margin: "20px", border: "1px solid", textAlign:"center"}}>
-      <img src={props.img} alt={props.myname} style={{border:"1px solid", margin:"10px"}}></img>
-      <h3>{props.myname}</h3>
+    <div style={{ backgroundColor: "white", width: "250px", margin: "20px", border: "1px solid", textAlign: "center" }}>
+      <img src={img} alt={myname} style={{ border: "1px solid", margin: "10px", width: "200px", height: "200px", objectFit: "cover" }} />
+      <h3>{myname}</h3>
     </div>
   );
 }
 
-var arr = [
+const arr = [
   { name: "Julie's Rabbit Ears", img: dog01 },
   { name: "The Innocent Look", img: dog02 },
   { name: "Big Eyed Buggy", img: dog03 },
@@ -33,8 +32,8 @@ var arr = [
 
 root.render(
   <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", backgroundColor: "gray", justifyContent: "center" }}>
-    {arr.map(function (item, index) {
-      return <NameOne key={index} myname={item.name} img={item.img} />;
-    })}
+    {arr.map((item, index) => (
+      <NameOne key={index} myname={item.name} img={item.img} />
+    ))}
   </div>
 );
